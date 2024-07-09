@@ -1,4 +1,5 @@
-import styled from "styled-components";
+
+import styled from 'styled-components'
 
 export const Container = styled.button`
   width: 100%;
@@ -7,18 +8,12 @@ export const Container = styled.button`
 
   height: 56px;
   border: 0;
-  border-radius: 10px;
   padding: 0 16px;
   margin-top: 16px;
+  border-radius: 10px;
   font-weight: 500;
 
   &:disabled {
     opacity: 0.5;
   }
-
-
-
-
-  cursor: pointer;
-
-`;
+`

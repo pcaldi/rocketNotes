@@ -1,10 +1,21 @@
-import { Container } from "./styles";
+import PropTypes from 'prop-types'
+import { Container } from "./styles"
 
-
-export function Button() {
+export function Button({title, loading = false, ...rest}) {
   return (
-    <Container>
-      Entrar
+    <Container
+      type="button"
+      disabled={loading}
+      {...rest}
+    >
+      {
+        loading ? 'Carregando...' : title
+      }
     </Container>
   )
+}
+
+Button.propTypes = {
+  title: PropTypes.string.isRequired,
+  loading: PropTypes.bool,
 }
