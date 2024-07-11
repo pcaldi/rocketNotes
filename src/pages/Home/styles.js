@@ -17,12 +17,31 @@ export const Container = styled.div`
 
 export const Brand = styled.div`
   grid-area: brand;
-  background: red;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
+
+  background:${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+   > h1 {
+    font-size: 24px;
+    color: ${({ theme }) => theme.COLORS.ORANGE};
+   }
+
 `;
 
 export const Menu = styled.ul`
    grid-area: menu;
-   background: yellow;
+   padding-top: 64px;
+   text-align: center;
+
+   background:${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+   > li {
+      margin-bottom: 24px;
+   }
 `;
 
 export const Search = styled.div`
@@ -38,6 +57,18 @@ export const Content = styled.div`
 
 export const NewNote = styled.button`
    grid-area: newnote;
-   background: blue;
+   background:${({ theme }) => theme.COLORS.ORANGE};
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+   font-size: 24px;
+
+   > span {
+     font-size: 20px;
+     margin-left: 8px;
+     color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+   }
 
 `;
