@@ -1,8 +1,9 @@
 import { Container } from "./styles";
 
 
-export function Section(title, children){
-  return(
+// eslint-disable-next-line react/prop-types
+export function Section({ title, children }) {
+  return (
     <Container>
       <h1>{title}</h1>
       {children}

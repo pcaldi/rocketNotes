@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types'
+
 import { Container } from "./styles"
 
+// eslint-disable-next-line react/prop-types
 export function Button({title, loading = false, ...rest}) {
   return (
     <Container
@@ -15,7 +16,3 @@ export function Button({title, loading = false, ...rest}) {
   )
 }
 
-Button.propTypes = {
-  title: PropTypes.string.isRequired,
-  loading: PropTypes.bool,
-}

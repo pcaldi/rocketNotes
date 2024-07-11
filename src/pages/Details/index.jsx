@@ -1,4 +1,4 @@
-import { Container } from "./styles"
+import { Container, Links } from "./styles"
 
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
@@ -10,14 +10,14 @@ export function Details() {
       <Header />
 
       <Section title="Links úteis">
-        <ul>
-          <li>item 1</li>
-          <li>item 2</li>
-          <li>item 3</li>
-        </ul>
+        <Links>
+          <li>
+            <a href="https://github.com/pcaldi">GitHub</a>
+          </li>
+        </Links>
       </Section>
 
-      <Button title="Voltar"/>
+      <Button title="Voltar" />
     </Container>
   )
 }
