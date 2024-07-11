@@ -12,10 +12,19 @@ export function Details() {
       <Section title="Links úteis">
         <Links>
           <li>
-            <a href="https://github.com/pcaldi">GitHub</a>
+            <a href="#">https://github.com/pcaldi</a>
+          </li>
+          <li>
+            <a href="#">https://github.com/pcaldi</a>
           </li>
         </Links>
       </Section>
+
+      <Section title="Marcadores">
+
+
+      </Section>
+
 
       <Button title="Voltar" />
     </Container>

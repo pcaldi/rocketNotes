@@ -19,8 +19,7 @@ export const Links = styled.ul`
 
 
       a {
-        color: ${({ theme }) => theme.COLORS.GRAY_100};
-        text-decoration: none;
+        color: ${({ theme }) => theme.COLORS.WHITE};
 
         &:hover {
           color: ${({ theme }) => theme.COLORS.ORANGE};

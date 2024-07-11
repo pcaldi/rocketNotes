@@ -6,9 +6,7 @@ export const Container = styled.header`
     height: 105px;
     width: 100%;
 
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: ${({theme}) => theme.COLORS.BACKGROUND_700};
+    border-bottom:  1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
 
     display: flex;
     justify-content: space-between;
@@ -18,7 +16,7 @@ export const Container = styled.header`
 
   `
 
-export const Profile = styled.div `
+export const Profile = styled.div`
 
   display: flex;
   align-items: center;
@@ -37,12 +35,12 @@ export const Profile = styled.div `
 
     span {
       font-size: 14px;
-      color: ${({theme}) => theme.COLORS.GRAY_100};
+      color: ${({ theme }) => theme.COLORS.GRAY_100};
     }
 
     strong {
       font-size: 18px;
-      color: ${({theme}) => theme.COLORS.WITHE};
+      color: ${({ theme }) => theme.COLORS.WITHE};
     }
   }
 `;
@@ -53,11 +51,11 @@ export const Logout = styled.button`
   justify-content: center;
   background: none;
   border: none;
-  color: ${({theme}) => theme.COLORS.GRAY_100};
+  color: ${({ theme }) => theme.COLORS.GRAY_100};
   font-size: 36px;
 
   &:hover {
-    color: ${({theme}) => theme.COLORS.ORANGE};
+    color: ${({ theme }) => theme.COLORS.ORANGE};
   }
 
 `;
