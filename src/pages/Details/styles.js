@@ -9,6 +9,25 @@ export const Container = styled.div`
   grid-template-areas:
   "header"
   "content"
-`
+`;
+
+export const Links = styled.ul`
+  list-style: none;
+
+    > li {
+      margin-top: 12px;
+
+
+      a {
+        color: ${({ theme }) => theme.COLORS.GRAY_100};
+        text-decoration: none;
+
+        &:hover {
+          color: ${({ theme }) => theme.COLORS.ORANGE};
+        }
+      }
+    }
+
+`;
 
 
