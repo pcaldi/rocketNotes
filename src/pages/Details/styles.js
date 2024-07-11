@@ -8,7 +8,13 @@ export const Container = styled.div`
   grid-template-rows: 105px auto;
   grid-template-areas:
   "header"
-  "content"
+  "content";
+
+  > main {
+    grid-area: content;
+    overflow-y: scroll;
+    padding: 64px 0;
+  }
 `;
 
 export const Links = styled.ul`
@@ -26,6 +32,39 @@ export const Links = styled.ul`
         }
       }
     }
+
+`;
+
+export const Content = styled.div`
+  max-width: 550px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+    // Primeiro filho que é um button, aplicar nele um align self, fazendo isso só ele vai para o canto.
+  > button:first-child {
+    align-self: end;
+  }
+
+  > h1 {
+    font-size: 36px;
+    font-weight: 500;
+    padding-top: 64px;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+
+  }
+
+  > p {
+    font-size: 16px;
+    text-align: justify;
+    margin-top: 16px;
+    color: ${({ theme }) => theme.COLORS.WHITE};
+  }
+
+
+
+
 
 `;
 
