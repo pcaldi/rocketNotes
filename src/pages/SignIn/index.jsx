@@ -29,7 +29,8 @@ export function SignIn() {
 
         <Button title="Entrar" />
 
-        <ButtonText title="Criar conta" isactive />
+        <a href="#">Criar conta</a>
+
       </Form>
 
 
