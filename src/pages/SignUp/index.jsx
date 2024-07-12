@@ -35,7 +35,7 @@ export function SignUp() {
           icon={LuLock}
         />
 
-        <Button title="Entrar" />
+        <Button title="Cadastrar" />
 
         <a href="#">Voltar para o login</a>
 
