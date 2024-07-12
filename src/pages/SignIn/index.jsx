@@ -1,10 +1,9 @@
-import { Container, Form } from "./styles";
+import { Background, Container, Form } from "./styles";
 
 import { LuMail, LuLock } from "react-icons/lu";
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
-import { ButtonText } from "../../components/ButtonText"
 
 export function SignIn() {
   return (
@@ -33,6 +32,7 @@ export function SignIn() {
 
       </Form>
 
+      <Background />
 
     </Container>
   )
