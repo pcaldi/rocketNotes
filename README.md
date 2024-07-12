@@ -18,3 +18,9 @@ npm install styled-components
 npm install react-icons --save
 
 ```
+
+### Instalando rotas com React Router Dom
+```
+npm install react-router-dom
+
+```
