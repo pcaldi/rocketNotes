@@ -4,6 +4,10 @@
 ```
 npm create vite@latest
 ```
+> Instalando as dependências do projeto
+```
+npm i
+```
 > Rodando o Projeto
 ```
 npm run dev
