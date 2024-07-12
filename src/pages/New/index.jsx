@@ -2,6 +2,7 @@ import { Container, Form } from "./styles";
 
 import { Header } from "../../components/Header"
 import { Input } from "../../components/Input"
+import { Textarea } from "../../components/Textarea";
 
 export function New() {
   return (
@@ -19,6 +20,8 @@ export function New() {
             placeholder="Título"
             type="text"
           />
+
+          <Textarea placeholder="Observações" />
         </Form>
       </main>
 
