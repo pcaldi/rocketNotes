@@ -1,6 +1,6 @@
-import { Container, Form } from "./styles";
+import { Container, Form, Avatar } from "./styles";
 
-import { LuArrowLeft, LuMail, LuUser, LuLock } from "react-icons/lu"
+import { LuArrowLeft, LuMail, LuUser, LuLock, LuCamera } from "react-icons/lu"
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
@@ -16,6 +16,23 @@ export function Profile() {
       </header>
 
       <Form>
+        <Avatar>
+
+          <img
+            src="https://github.com/pcaldi.png" alt="Foto do usuário"
+          />
+          <label htmlFor="avatar">
+
+            <LuCamera />
+
+            <input
+              type="file"
+              id="avatar"
+            />
+
+          </label>
+
+        </Avatar>
         <Input
           placeholder="Name"
           type="text"
