@@ -1,12 +1,12 @@
-import {RiShutDownLine} from 'react-icons/ri'
+import { RiShutDownLine } from 'react-icons/ri'
 
-import { Container, Profile, Logout} from './styles';
+import { Container, Profile, Logout } from './styles';
 
 
-export function Header(){
-  return(
+export function Header() {
+  return (
     <Container>
-      <Profile>
+      <Profile to="/profile">
         <img src="https://github.com/pcaldi.png" alt="Foto do usuário" />
         <div>
           <span>Bem-vindo</span>

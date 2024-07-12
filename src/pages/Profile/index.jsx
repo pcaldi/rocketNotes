@@ -1,5 +1,7 @@
 import { Container, Form, Avatar } from "./styles";
 
+import { Link } from "react-router-dom";
+
 import { LuArrowLeft, LuMail, LuUser, LuLock, LuCamera } from "react-icons/lu"
 
 import { Input } from "../../components/Input"
@@ -10,9 +12,9 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <a href="/">
+        <Link to="/">
           <LuArrowLeft />
-        </a>
+        </Link>
       </header>
 
       <Form>

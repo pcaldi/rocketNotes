@@ -1,5 +1,7 @@
 import { Background, Container, Form } from "./styles";
 
+import { Link } from "react-router-dom";
+
 import { LuMail, LuLock } from "react-icons/lu";
 
 import { Input } from "../../components/Input"
@@ -28,7 +30,7 @@ export function SignIn() {
 
         <Button title="Entrar" />
 
-        <a href="#">Criar conta</a>
+        <Link to="/register">Criar conta</Link>
 
       </Form>
 
