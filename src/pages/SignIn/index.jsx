@@ -1,13 +1,18 @@
+import { Link } from "react-router-dom";
+import { LuMail, LuLock } from "react-icons/lu";
+
 import { Background, Container, Form } from "./styles";
 
-import { Link } from "react-router-dom";
-
-import { LuMail, LuLock } from "react-icons/lu";
+import { useAuth } from "../../hooks/auth";
 
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 
 export function SignIn() {
+
+  const data = useAuth();
+  console.log(data); // paulo@email.com
+
   return (
     <Container>
       <Form>
