@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LuMail, LuLock } from "react-icons/lu";
 
@@ -9,9 +10,14 @@ import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 
 export function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const data = useAuth();
-  console.log(data); // paulo@email.com
+  const { signIn } = useAuth();
+
+  function handleSignIn() {
+    signIn({ email, password });
+  }
 
   return (
     <Container>
@@ -25,15 +31,17 @@ export function SignIn() {
           placeholder="E-mail"
           icon={LuMail}
           type="text"
+          onChange={e => setEmail(e.target.value)}
         />
 
         <Input
           placeholder="Senha"
           type="password"
           icon={LuLock}
+          onChange={e => setPassword(e.target.value)}
         />
 
-        <Button title="Entrar" />
+        <Button title="Entrar" onClick={handleSignIn} />
 
         <Link to="/register">Criar conta</Link>
 
