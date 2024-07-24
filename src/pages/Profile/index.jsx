@@ -1,14 +1,25 @@
+import { useState } from "react";
+
 import { Container, Form, Avatar } from "./styles";
 
 import { Link } from "react-router-dom";
 
 import { LuArrowLeft, LuMail, LuUser, LuLock, LuCamera } from "react-icons/lu"
 
+import { useAuth } from "../../hooks/auth";
+
 import { Input } from "../../components/Input"
 import { Button } from "../../components/Button"
 
 
 export function Profile() {
+  const { user } = useAuth()
+
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  const [oldPassword, setOldPassword] = useState();
+  const [newPassword, setNewPassword] = useState();
+
   return (
     <Container>
       <header>
@@ -39,27 +50,29 @@ export function Profile() {
           placeholder="Name"
           type="text"
           icon={LuUser}
-          disabled
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <Input
           placeholder="E-mail"
           type="text"
           icon={LuMail}
-          disabled
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <Input
           placeholder="Senha atual"
           type="password"
           icon={LuLock}
-
+          onChange={(e) => setOldPassword(e.target.value)}
         />
 
         <Input
           placeholder="Nova senha"
           type="password"
           icon={LuLock}
-
+          onChange={(e) => setNewPassword(e.target.value)}
         />
         <Button title="Salvar" />
       </Form>
