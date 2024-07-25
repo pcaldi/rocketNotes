@@ -14,6 +14,9 @@ export function New() {
   const [links, setLinks] = useState([]);
   const [newLink, setNewLink] = useState("");
 
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState("");
+
 
   function handleAddLink() {
     // Acesso através do prevState o que tinha antes,
@@ -26,8 +29,26 @@ export function New() {
   }
 
   function handleRemoveLink(deleted) {
-    // Filtrando os links que não são iguais ao link deletado.
-    setLinks(prevState => prevState.filter(link => link !== deleted))
+    // Utilizo o prevState para buscar o já foi passado
+    // Depois faço um filter nos links que não são iguais ao link selecionado.
+    setLinks(prevState => prevState.filter(link => link !== deleted));
+
+  }
+
+  function handleAddTag() {
+    // Acesso através do prevState o que tinha antes,
+    // e (despejo, utilizando o ...spread operator)
+    //tudo o que tinha antes com o novo link
+    setTags(prevState => [...prevState, newTag]);
+
+    // Reseto o input para ser vazio.
+    setNewTag("");
+  }
+
+  function handleRemoveTag(deleted) {
+    // Utilizo o prevState para buscar o já foi passado
+    // Depois faço um filter nas tags que não são iguais a tag selecionada.
+    setTags(prevState => prevState.filter(tag => tag !== deleted));
   }
 
   return (
@@ -70,8 +91,24 @@ export function New() {
 
           <Section title="Marcadores">
             <div className="tags">
-              <NoteItem value="#React" />
-              <NoteItem isNew placeholder="Novo Marcador" />
+              {
+                tags.map((tag, index) => (
+                  <NoteItem
+                    key={String(index)}
+                    value={tag}
+                    //Quando tenho que passar um parâmetro, sempre utilizo arrow function.
+                    onClick={() => handleRemoveTag(tag)}
+                  />
+                ))
+              }
+
+              <NoteItem
+                isNew
+                placeholder="Novo Marcador"
+                value={newTag}
+                onChange={e => setNewTag(e.target.value)}
+                onClick={handleAddTag}
+              />
 
             </div>
           </Section>
