@@ -25,6 +25,11 @@ export function New() {
     setNewLink("");
   }
 
+  function handleRemoveLink(deleted) {
+    // Filtrando os links que não são iguais ao link deletado.
+    setLinks(prevState => prevState.filter(link => link !== deleted))
+  }
+
   return (
     <Container>
       <Header />
@@ -49,7 +54,8 @@ export function New() {
                 <NoteItem
                   key={String(index)}
                   value={link}
-                  onClick={() => { }}
+                  //Quando tenho que passar um parâmetro, sempre utilizo arrow function.
+                  onClick={() => handleRemoveLink(link)}
                 />
               ))
             }
