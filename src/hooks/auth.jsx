@@ -46,9 +46,18 @@ function AuthProvider({ children }) {
   }
 
   // Atualizar o perfil
-  async function updateProfile({ user }) {
+  async function updateProfile({ user, avatarFile }) {
 
     try {
+      // Verifico se o avatarFile existe, antes de fazer o upload.
+      if (avatarFile) {
+        const fileUploadForm = new FormData();
+        fileUploadForm.append("avatar", avatarFile);
+
+        const response = await api.patch("/users/avatar", fileUploadForm);
+        user.avatar = response.data.avatar;
+      }
+
 
       await api.put("/users", user);
 
