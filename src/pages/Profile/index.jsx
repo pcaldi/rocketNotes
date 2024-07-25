@@ -13,12 +13,26 @@ import { Button } from "../../components/Button"
 
 
 export function Profile() {
-  const { user } = useAuth()
+  const { user, updateProfile } = useAuth();
 
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
+
+
+
+  async function handleUpdateProfile() {
+    // Crio um objeto passando os dados para atualizar o profile.
+    const user = {
+      name,
+      email,
+      password: newPassword,
+      old_password: oldPassword,
+    }
+    // Atualizo o profile na api.
+    await updateProfile({ user });
+  }
 
   return (
     <Container>
@@ -74,7 +88,10 @@ export function Profile() {
           icon={LuLock}
           onChange={(e) => setNewPassword(e.target.value)}
         />
-        <Button title="Salvar" />
+        <Button
+          title="Salvar"
+          onClick={handleUpdateProfile}
+        />
       </Form>
     </Container>
   )
