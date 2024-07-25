@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { Container, Form } from "./styles";
 
 import { Header } from "../../components/Header"
@@ -8,6 +10,21 @@ import { NoteItem } from "../../components/NoteItem";
 import { Button } from "../../components/Button";
 
 export function New() {
+
+  const [links, setLinks] = useState([]);
+  const [newLink, setNewLink] = useState("");
+
+
+  function handleAddLink() {
+    // Acesso através do prevState o que tinha antes,
+    // e (despejo, utilizando o ...spread operator)
+    //tudo o que tinha antes com o novo link
+    setLinks(prevState => [...prevState, newLink]);
+
+    // Reseto o input para ser vazio.
+    setNewLink("");
+  }
+
   return (
     <Container>
       <Header />
@@ -27,10 +44,23 @@ export function New() {
           <Textarea placeholder="Observações" />
 
           <Section title="Links úteis">
-            <NoteItem value="https://github.com/pcaldi" />
-            <NoteItem isNew placeholder="Novo link" />
-
-          </Section >
+            {
+              links.map((link, index) => (
+                <NoteItem
+                  key={String(index)}
+                  value={link}
+                  onClick={() => { }}
+                />
+              ))
+            }
+            <NoteItem
+              isNew
+              placeholder="Novo link"
+              value={newLink}
+              onChange={e => setNewLink(e.target.value)}
+              onClick={handleAddLink}
+            />
+          </Section>
 
           <Section title="Marcadores">
             <div className="tags">
