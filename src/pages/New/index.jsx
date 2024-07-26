@@ -61,6 +61,25 @@ export function New() {
   }
 
   async function handleNewNote() {
+
+    // Validações
+    if (!title) {
+      return alert("Preencha o título da nota.")
+    }
+
+    if (newLink) {
+      return alert("O link foi preenchido mas não foi adicionado!");
+
+    }
+
+    if (newTag) {
+      return alert("A tag foi preenchida mas não foi adicionada!");
+
+    }
+
+
+
+
     // Objeto com todos os campos necessários.
     const newNote = {
       title,
