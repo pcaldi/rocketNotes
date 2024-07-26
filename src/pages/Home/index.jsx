@@ -41,7 +41,7 @@ export function Home() {
 
         { // Se existir tags eu pego a tags e percorro utilizando o map.
           tags && tags.map(tag => (
-            <li key={tag.id}>
+            <li key={String(tag.id)}>
               <ButtonText title={tag.name} />
             </li>
           ))
