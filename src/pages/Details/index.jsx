@@ -17,6 +17,7 @@ export function Details() {
   const [data, setData] = useState(null);
 
   const params = useParams();
+
   const navigate = useNavigate();
 
   function handleBack() {
@@ -57,10 +58,7 @@ export function Details() {
                       <li
                         key={String(link.id)}
                       >
-                        <a
-                          href={link.url}
-                          target="_blank"
-                        >
+                        <a href={link.url} target="_blank">
                           {link.url}
                         </a>
                       </li>
