@@ -11,12 +11,15 @@ import { Input } from '../../components/Input'
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
 import { ButtonText } from '../../components/ButtonText'
+import { useNavigate } from 'react-router-dom';
 
 export function Home() {
   const [tags, setTags] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
   const [search, setSearch] = useState("");
   const [notes, setNotes] = useState([]);
+
+  const navigate = useNavigate();
 
 
   function handleTagSelected(tagName) {
@@ -36,6 +39,10 @@ export function Home() {
     }
 
 
+  }
+
+  function handleDetails(id) {
+    navigate(`/details/${id}`)
   }
 
   useEffect(() => {
@@ -93,7 +100,7 @@ export function Home() {
       <Search>
         <Input
           placeholder="Pesquisar pelo título"
-          onChange={e => setSearch(e.target.value)}  // Quando o input é alterado, ele vai atualizar o valor de search.
+          onChange={(e) => setSearch(e.target.value)}  // Quando o input é alterado, ele vai atualizar o valor de search.
         />
 
       </Search>
@@ -107,6 +114,7 @@ export function Home() {
               <Note
                 key={note.id}
                 data={note}
+                onClick={() => handleDetails(note.id)}  // Quando eu clicar na notas, vai redirecionar para a tela de detalhes.
               />
             ))
           }
