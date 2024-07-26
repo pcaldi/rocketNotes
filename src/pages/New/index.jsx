@@ -2,8 +2,12 @@ import { useState } from "react";
 
 import { Container, Form } from "./styles";
 
-import { Header } from "../../components/Header"
-import { Input } from "../../components/Input"
+import { api } from "../../services/api";
+
+import { useNavigate } from "react-router-dom";
+
+import { Header } from "../../components/Header";
+import { Input } from "../../components/Input";
 import { Textarea } from "../../components/Textarea";
 import { Section } from "../../components/Section";
 import { NoteItem } from "../../components/NoteItem";
@@ -16,6 +20,11 @@ export function New() {
 
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const navigate = useNavigate();
 
 
   function handleAddLink() {
@@ -51,6 +60,23 @@ export function New() {
     setTags(prevState => prevState.filter(tag => tag !== deleted));
   }
 
+  async function handleNewNote() {
+    // Objeto com todos os campos necessários.
+    const newNote = {
+      title,
+      description,
+      links,
+      tags,
+    }
+
+    // fazer o request para o backend para salvar a nova notas.
+    await api.post("/notes", newNote);
+
+    alert("Nota cadastrada com sucesso!");
+    // Se a request for bem sucedida, redireciono para a lista de notas.
+    navigate("/");
+  }
+
   return (
     <Container>
       <Header />
@@ -65,9 +91,13 @@ export function New() {
           <Input
             placeholder="Título"
             type="text"
+            onChange={e => setTitle(e.target.value)}
           />
 
-          <Textarea placeholder="Observações" />
+          <Textarea
+            placeholder="Observações"
+            onChange={e => setDescription(e.target.value)}
+          />
 
           <Section title="Links úteis">
             {
@@ -113,7 +143,10 @@ export function New() {
             </div>
           </Section>
 
-          <Button title="Salvar" />
+          <Button
+            title="Salvar"
+            onClick={handleNewNote}
+          />
         </Form>
       </main>
 
