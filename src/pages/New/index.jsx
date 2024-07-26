@@ -73,7 +73,7 @@ export function New() {
             {
               links.map((link, index) => (
                 <NoteItem
-                  key={String(index)}
+                  key={String(index)}  //A key por padrão tem que ser em formato de string
                   value={link}
                   //Quando tenho que passar um parâmetro, sempre utilizo arrow function.
                   onClick={() => handleRemoveLink(link)}
@@ -94,7 +94,7 @@ export function New() {
               {
                 tags.map((tag, index) => (
                   <NoteItem
-                    key={String(index)}
+                    key={String(index)} //A key por padrão tem que ser em formato de string
                     value={tag}
                     //Quando tenho que passar um parâmetro, sempre utilizo arrow function.
                     onClick={() => handleRemoveTag(tag)}
