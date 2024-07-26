@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Container, Form, Avatar } from "./styles";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import avatarPlaceholder from "../../assets/avatar.svg";
 
@@ -30,8 +30,11 @@ export function Profile() {
   // URL da imagem do avatar do usuário salva no banco de dados.
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
 
+  const navigate = useNavigate();
 
-
+  function handleBack() {
+    navigate(-1)
+  }
 
   async function handleUpdateProfile() {
     // Crio um objeto passando os dados para atualizar o profile.
@@ -63,9 +66,9 @@ export function Profile() {
   return (
     <Container>
       <header>
-        <Link to="/">
+        <button type="button" onClick={handleBack}>
           <LuArrowLeft />
-        </Link>
+        </button>
       </header>
 
       <Form>

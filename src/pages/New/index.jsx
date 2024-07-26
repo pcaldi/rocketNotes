@@ -12,6 +12,7 @@ import { Textarea } from "../../components/Textarea";
 import { Section } from "../../components/Section";
 import { NoteItem } from "../../components/NoteItem";
 import { Button } from "../../components/Button";
+import { ButtonText } from "../../components/ButtonText";
 
 export function New() {
 
@@ -26,6 +27,10 @@ export function New() {
 
   const navigate = useNavigate();
 
+
+  function handleBack() {
+    navigate(-1)
+  }
 
   function handleAddLink() {
     // Acesso através do prevState o que tinha antes,
@@ -69,16 +74,11 @@ export function New() {
 
     if (newLink) {
       return alert("O link foi preenchido mas não foi adicionado!");
-
     }
 
     if (newTag) {
       return alert("A tag foi preenchida mas não foi adicionada!");
-
     }
-
-
-
 
     // Objeto com todos os campos necessários.
     const newNote = {
@@ -104,7 +104,7 @@ export function New() {
         <Form>
           <header>
             <h1>Criar nota</h1>
-            <a href="/">voltar</a>
+            <ButtonText title="Voltar" onClick={handleBack} />
           </header>
 
           <Input
