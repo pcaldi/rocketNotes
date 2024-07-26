@@ -14,6 +14,29 @@ import { ButtonText } from '../../components/ButtonText'
 
 export function Home() {
   const [tags, setTags] = useState([]);
+  const [tagsSelected, setTagsSelected] = useState([]);
+  const [search, setSearch] = useState("");
+  const [notes, setNotes] = useState([]);
+
+
+  function handleTagSelected(tagName) {
+    // Verifico se o usuário clicar em "Todas", desmarco todas as outras tags;
+    if (tagName === "all") {
+      return setTagsSelected([]);
+    }
+
+    const alreadySelected = tagsSelected.includes(tagName);
+
+    if (alreadySelected) {
+      const filteredTags = tagsSelected.filter(tag => tag !== tagName);
+      setTagsSelected(filteredTags);
+    } else {
+
+      setTagsSelected(prevState => [...prevState, tagName]);
+    }
+
+
+  }
 
   useEffect(() => {
     async function fetchTags() {
@@ -26,6 +49,16 @@ export function Home() {
     fetchTags();
   }, []);
 
+  useEffect(() => {
+    async function fetchNotes() {
+      const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`);
+      setNotes(response.data);
+    }
+    fetchNotes();
+
+
+  }, [search, tagsSelected])
+
   return (
     <Container>
       <Brand>
@@ -36,13 +69,21 @@ export function Home() {
 
       <Menu>
         <li>
-          <ButtonText title="Todos" isactive />
+          <ButtonText
+            title="Todos"
+            onClick={() => handleTagSelected("all")}
+            isactive={tagsSelected.length == 0} // Verifico se o array está vazio
+          />
         </li>
 
-        { // Se existir tags eu pego a tags e percorro utilizando o map.
+        { // Se existir ( && ) tags eu pego a tags e percorro utilizando o map.
           tags && tags.map(tag => (
             <li key={String(tag.id)}>
-              <ButtonText title={tag.name} />
+              <ButtonText
+                title={tag.name}
+                onClick={() => handleTagSelected(tag.name)}
+                isactive={tagsSelected.includes(tag.name)} //Verifico se a tag existir, ele vai retornar verdadeiro se existir e falso caso não exista.
+              />
             </li>
           ))
         }
@@ -50,7 +91,10 @@ export function Home() {
       </Menu>
 
       <Search>
-        <Input placeholder="Pesquisar pelo título" />
+        <Input
+          placeholder="Pesquisar pelo título"
+          onChange={e => setSearch(e.target.value)}  // Quando o input é alterado, ele vai atualizar o valor de search.
+        />
 
       </Search>
 
@@ -58,17 +102,14 @@ export function Home() {
 
         <Section title="Minhas notas">
 
-          <Note data={{
-            title: 'React',
-            tags: [{
-              id: '1',
-              name: 'React'
-            },
-            {
-              id: '2',
-              name: 'React Native'
-            }]
-          }} />
+          {
+            notes.map(note => (
+              <Note
+                key={note.id}
+                data={note}
+              />
+            ))
+          }
 
         </Section>
 
