@@ -38,14 +38,17 @@ export function Profile() {
 
   async function handleUpdateProfile() {
     // Crio um objeto passando os dados para atualizar o profile.
-    const user = {
+    const updated = {
       name,
       email,
       password: newPassword,
       old_password: oldPassword,
     }
+    const userUpdated = Object.assign(user, updated)
+
+
     // Atualizo o profile na api.
-    await updateProfile({ user, avatarFile });
+    await updateProfile({ user: userUpdated, avatarFile });
   }
 
 
