@@ -24,11 +24,12 @@ export function Profile() {
   const [oldPassword, setOldPassword] = useState();
   const [newPassword, setNewPassword] = useState();
 
-  const [avatar, setAvatar] = useState(user.avatar);
-  const [avatarFile, setAvatarFile] = useState(null);
-
   // URL da imagem do avatar do usuário salva no banco de dados.
   const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
+  const [avatar, setAvatar] = useState(avatarUrl);
+  const [avatarFile, setAvatarFile] = useState(null);
+
 
   const navigate = useNavigate();
 
@@ -44,8 +45,7 @@ export function Profile() {
       password: newPassword,
       old_password: oldPassword,
     }
-    const userUpdated = Object.assign(user, updated)
-
+    const userUpdated = Object.assign(user, updated);
 
     // Atualizo o profile na api.
     await updateProfile({ user: userUpdated, avatarFile });
@@ -78,7 +78,7 @@ export function Profile() {
         <Avatar>
 
           <img
-            src={avatarUrl}
+            src={avatar}
             alt={user.name}
           />
           <label htmlFor="avatar">
@@ -86,14 +86,13 @@ export function Profile() {
             <LuCamera />
 
             <input
-              type="file"
               id="avatar"
+              type="file"
               onChange={handleChangeAvatar}
             />
-
           </label>
-
         </Avatar>
+
         <Input
           placeholder="Name"
           type="text"
@@ -101,6 +100,7 @@ export function Profile() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+
         <Input
           placeholder="E-mail"
           type="text"
@@ -122,6 +122,7 @@ export function Profile() {
           icon={LuLock}
           onChange={(e) => setNewPassword(e.target.value)}
         />
+
         <Button
           title="Salvar"
           onClick={handleUpdateProfile}
